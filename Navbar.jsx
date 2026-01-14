@@ -1,46 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import AddIcon from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
-    <nav style={styles.nav}>
-      <h2 style={styles.logo}>Monsoon Exit</h2>
-      <ul style={styles.ul}>
-        <li>
-          <Link to="/" style={styles.link}>Home</Link>
-        </li>
-        <li>
-          <Link to="/add" style={styles.link}>Add</Link>
-        </li>
-      </ul>
-    </nav>
+    <AppBar position="static" sx={{ backgroundColor: "#9c27b0" }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h6">EmployeeApp</Typography>
+        <div>
+          <IconButton color="inherit" onClick={() => navigate("/")}>
+            <HomeIcon />
+          </IconButton>
+          <IconButton color="inherit" onClick={() => navigate("/add")}>
+            <AddIcon />
+          </IconButton>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 
-const styles = {
-  nav: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 20px",
-    backgroundColor: "#1e293b",
-  },
-  logo: {
-    color: "white",
-  },
-  ul: {
-    listStyle: "none",
-    display: "flex",
-    gap: "15px",
-  },
-  link: {
-    color: "white",
-    textDecoration: "none",
-    fontWeight: "bold",
-  },
-};
-
 export default Navbar;
-
-
-
